@@ -27,7 +27,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                     <li><a asp-page="/product/ViewAllProducts" class="dropdown-item">View All</a></li>
-                                    <li><a asp-page="/product/AddProduct" class=" dropdown-item">Add New</a></li>
+                                    <li><a asp-page="/product/AddProduct" class=" dropdown-item">Add New</a></li>                                    
                                 </ul>
                             </li>
                             <li class="nav-item">
@@ -63,7 +63,8 @@
                             var url = Context.Request.Path;   
                         }
 
-                        @switch(url.Value.ToLower())
+                        
+                        @* @switch(url.Value.ToLower())
                         {
                             case "/":
                             <img src ="~/images/cups.png"/>
@@ -75,7 +76,17 @@
                             <img src ="~/images/menu/beans.png"/>
                             break;                           
                                 
+                        } *@
+
+                        @if (IsSectionDefined("RightFooter"))
+                        {
+                            @RenderSection("RightFooter")
                         }
+                        else
+                        {
+                            <img src="~/images/cups-dark.png"/>
+                        }
+
 
                         <p>Picture content goes here.</p>
                     </div>
@@ -86,6 +97,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <partial name ="_ValidationScriptsPartial" />
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

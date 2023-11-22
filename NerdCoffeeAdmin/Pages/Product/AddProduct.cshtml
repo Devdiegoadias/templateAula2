@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/Product/add"
 @model NerdCoffeeAdmin.Pages.Product.AddProductModel
 @{
 }
@@ -7,3 +7,37 @@
 <h1>Add Product</h1>
 <hr />
 
+<div class="row">
+    <div class="col-md-6">
+        <form method="Post">
+            <div asp-validation-summary="All"></div>
+
+            <div class="mb-3">
+                <label asp-for="NewProduct.Name">Name</label>
+                <input asp-for="NewProduct.Name" class="form-control" />
+                <span asp-validation-for="NewProduct.Name"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="NewProduct.ShortDescription">ShortDescription</label>
+                <input asp-for="NewProduct.ShortDescription" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="NewProduct.Description">Description</label>
+                <textarea asp-for="NewProduct.Description" class="form-control"> </textarea>
+            </div>
+            <div class="mb-3">
+                <label asp-for="NewProduct.Category">Category</label>
+                <select asp-for="NewProduct.Category" class="form-control">
+                    <option value="Beverage">Beverage</option>
+                    <option value="Food">Food</option>
+                </select>
+            </div>
+            <button class="btn btn-success">Create</button>
+        </form>
+    </div>
+</div>
+
+@section RightFooter
+{
+    <img src="~/images/menu/beans.png" />
+}
